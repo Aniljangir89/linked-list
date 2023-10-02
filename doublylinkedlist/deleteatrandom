@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+class node
+{
+public:
+    int val;
+    node *next;
+    node *prev;
+    node(int data)
+    {
+        val = data;
+        next = NULL;
+        prev = NULL;
+    }
+};
+class doublylinkedlist
+{
+public:
+    node *head;
+    node *tail;
+    doublylinkedlist()
+    {
+        head = NULL;
+        tail = NULL;
+    }
+    void traverse(int val)
+    {
+        node *newnode = new node(val);
+        if (head == NULL)
+        {
+            head = newnode;
+            tail = newnode;
+            return;
+        }
+        newnode->next = head;
+        head->prev = newnode;
+        head = newnode;
+        return;
+    }
+    void deleteatrandom( int index)
+    {
+        int count = 1;
+        node *temp = head;
+        while (count < index-1)
+        {
+            temp = temp->next;
+            count++;
+        }
+        temp->next=temp->next->next;
+        temp=temp->next->prev;
+
+        free(temp);
+          return;
+    }
+    void display()
+    {
+        node *temp = head;
+        while (temp != NULL)
+        {
+            cout << temp->val << "<->";
+            temp = temp->next;
+        }
+        cout << '\n';
+    }
+};
+int main()
+{
+    doublylinkedlist dll;
+    dll.traverse(4);
+    dll.traverse(3);
+    dll.traverse(2);
+    dll.traverse(1);
+    dll.display();
+    dll.deleteatrandom(3);
+    dll.display();
+    return 0;
+}
