@@ -1,0 +1,76 @@
+// delete all duplicate node from linked listed
+#include <iostream>
+#include <string.h>
+using namespace std;
+class node
+{
+public:
+    int val;
+    node *next;
+    node(int data)
+    {
+        val = data;
+        next = NULL;
+    }
+};
+void insert(node *&head, int val)
+{
+    node *newnode = new node(val);
+    newnode->next = head;
+    head = newnode;
+}
+void reverse(node *&head, int val)
+{
+    //initialize current, previous and next pointers
+    node *current = head;
+    node *prev = NULL;
+    node *next1 = NULL;
+    while (current != NULL)
+    {
+        //store next
+        next1 = current->next;
+        //reverse current node
+        current->next = prev;
+        //move pointer one position ahead
+        prev = current;
+        current = next1;
+    }
+    head = prev;
+}
+
+void display(node *head)
+{
+    node *temp = head;
+
+    while (temp != NULL)
+    {
+        cout << temp->val << "->";
+        temp = temp->next;
+    }
+    cout << "null" << endl;
+}
+int main()
+
+{
+    node *head = NULL;
+    insert(head, 1);
+    display(head);
+    insert(head, 2);
+    display(head);
+    insert(head, 3);
+    display(head);
+    insert(head, 4);
+    display(head);
+    cout << "reverse linked list is:=";
+
+    reverse(head, 1);
+    display(head);
+    reverse(head, 2);
+    display(head);
+    reverse(head, 3);
+    display(head);
+    reverse(head, 4);
+    display(head);
+
+    return 0;
+}
