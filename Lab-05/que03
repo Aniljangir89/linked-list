@@ -1,4 +1,4 @@
-// Q . delete a number
+// Q . reverse a Linked list 
 // Anil kumar (2212090)
 #include <iostream>
 using namespace std;
