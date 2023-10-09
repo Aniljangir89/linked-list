@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+class node
+{
+public:
+    int val;
+    node *next;
+    node(int data)
+    {
+        val = data;
+        next = NULL;
+    }
+};
+void traverse(node *&head, int val)
+{
+    node *new_node = new node(val);
+    new_node->next = head;
+    head = new_node;
+}
+void duplicate(node *&head)
+{
+    node *livenode = head;
+    while (livenode != NULL)
+    {
+        while (livenode->next && livenode->val == livenode->next->val)
+        {
+            node *temp = livenode->next; // node to be delete
+
+            livenode->next = livenode->next->next;
+            free(temp);
+        }
+        livenode = livenode->next;
+    }
+}
+
+void display(node *head)
+{
+    node *ptr = head;
+    while (ptr != NULL)
+    {
+        cout << ptr->val << "->";
+        ptr = ptr->next;
+    }
+    cout << " NULL " << '\n';
+}
+
+int main()
+{
+    node *head = NULL;
+    traverse(head, 1);
+   
+    traverse(head, 2);
+   
+    traverse(head, 2);
+   
+    traverse(head, 3);
+   
+    traverse(head, 3);
+ 
+    traverse(head, 3);
+   
+    duplicate(head);
+    display(head);
+
+    return 0;
+}
