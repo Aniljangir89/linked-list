@@ -1,4 +1,4 @@
-// Q . print middle
+// Q . print middle of linked list 
 // Anil kumar (2212090)
 #include <iostream>
 using namespace std;
@@ -42,15 +42,15 @@ int main()
     traverse(head, 1);
     cout << "original linked list is-" << '\n';
     display(head);
-    node *temp;
-    int count = 1;
+    node *temp=head;
+    int count = 0;
     while (temp != NULL)
     {
         temp = temp->next;
         count++;
     }
     temp = head;
-    int sin = 1;
+    int sin = 0;
     if (count % 2 == 0)
     {
         while (sin != count - 1)
@@ -58,7 +58,7 @@ int main()
             temp = temp->next;
             sin++;
         }
-        cout << temp->data << temp->next->data;
+        cout << temp->data <<" "<< temp->next->data;
     }
     else
     {
