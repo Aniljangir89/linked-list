@@ -50,10 +50,10 @@ int main()
         count++;
     }
     temp = head;
-    int sin = 0;
+    int sin = 1;
     if (count % 2 == 0)
     {
-        while (sin != count - 1)
+        while (sin != count/2)
         {
             temp = temp->next;
             sin++;
@@ -62,7 +62,7 @@ int main()
     }
     else
     {
-        while(sin!=count-1){
+        while(sin!=(count+1)/2){
             temp=temp->next ;
             sin++;
         }
